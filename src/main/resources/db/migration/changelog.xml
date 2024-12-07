@@ -8,4 +8,7 @@
     <!-- 01_mafia_user_table -->
     <include file="/db/migration/v1/01_mafia_user/v001_create_mafia_user_table.sql"/>
 
+    <!--02_mafia_game_session-->
+    <include file="/db/migration/v1/02_mafia_game_session/v001_create_mafia_game_session_table.sql"/>
+
 </databaseChangeLog>

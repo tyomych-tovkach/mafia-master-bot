@@ -17,17 +17,19 @@ public class TelegramUserConsumer implements TelegramUpdateConsumer {
     @Override
     @Transactional
     public void accept(Update update) {
-        var telegramUser = update.getMessage().getFrom();
-        mafiaUserRepository.findByTelegramUserId(telegramUser.getId())
-            .ifPresentOrElse(
-                mafiaUser -> {
-                    mafiaUserConverter.enrichFromTelegramUser(mafiaUser, telegramUser);
-                    mafiaUserRepository.save(mafiaUser);
-                },
-                () -> {
-                    var mafiaUser = mafiaUserConverter.createFromTelegramUser(telegramUser);
-                    mafiaUserRepository.save(mafiaUser);
-                }
-            );
+        if (update.getMessage() != null && update.getMessage().getFrom() != null) {
+            var telegramUser = update.getMessage().getFrom();
+            mafiaUserRepository.findByTelegramUserId(telegramUser.getId())
+                .ifPresentOrElse(
+                    mafiaUser -> {
+                        mafiaUserConverter.enrichFromTelegramUser(mafiaUser, telegramUser);
+                        mafiaUserRepository.save(mafiaUser);
+                    },
+                    () -> {
+                        var mafiaUser = mafiaUserConverter.createFromTelegramUser(telegramUser);
+                        mafiaUserRepository.save(mafiaUser);
+                    }
+                );
+        }
     }
 }

@@ -20,6 +20,7 @@ COMMENT ON COLUMN mafia_user.surname IS 'Фамилия';
 COMMENT ON COLUMN mafia_user.name IS 'Имя';
 COMMENT ON COLUMN mafia_user.patronymic IS 'Отчество';
 COMMENT ON COLUMN mafia_user.username IS 'Имя пользователя';
+
 COMMENT ON COLUMN mafia_user.created_at IS 'Время создание записи';
 COMMENT ON COLUMN mafia_user.updated_at IS 'Время обновления записи';
 COMMENT ON COLUMN mafia_user.version IS 'Версия записи';
