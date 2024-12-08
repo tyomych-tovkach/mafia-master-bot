@@ -5,7 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <!-- 01_mafia_user_table -->
+    <!--00_common -->
+    <include file="/db/migration/v1/00_common/util/v001_define_type_casting_by_value_function.sql"/>
+    <include file="/db/migration/v1/00_common/util/v002_make_string_suitable_for_fuzzy_search_function.sql"/>
+    <include file="/db/migration/v1/00_common/condition/v001_advanced_filter_condition_function.sql"/>
+    <include file="/db/migration/v1/00_common/condition/v002_compute_advanced_filter_condition_function.sql"/>
+
+    <!--01_mafia_user_table -->
     <include file="/db/migration/v1/01_mafia_user/v001_create_mafia_user_table.sql"/>
 
     <!--02_mafia_game_session-->
