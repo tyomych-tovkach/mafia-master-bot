@@ -10,14 +10,21 @@
     <include file="/db/migration/v1/00_common/util/v002_make_string_suitable_for_fuzzy_search_function.sql"/>
     <include file="/db/migration/v1/00_common/condition/v001_advanced_filter_condition_function.sql"/>
     <include file="/db/migration/v1/00_common/condition/v002_compute_advanced_filter_condition_function.sql"/>
+    <include file="/db/migration/v1/00_common/v001_search_entity_function.sql"/>
 
     <!--01_mafia_user_table -->
     <include file="/db/migration/v1/01_mafia_user/v001_create_mafia_user_table.sql"/>
 
     <!--02_mafia_game_session-->
     <include file="/db/migration/v1/02_mafia_game_session/v001_create_mafia_game_session_table.sql"/>
+    <include file="/db/migration/v1/02_mafia_game_session/v002_mafia_game_session_card_projection_search_function.sql"/>
 
     <!--03_mafia_game_session_participant-->
     <include file="/db/migration/v1/03_mafia_game_session_participant/v001_mafia_game_session_participant.sql"/>
+
+
+    <!--VIEW-->
+        <!--02_mafia_game_session-->
+    <include file="/db/migration/v1/02_mafia_game_session/v003_create_mafia_game_session_card_projection_view.sql"/>
 
 </databaseChangeLog>

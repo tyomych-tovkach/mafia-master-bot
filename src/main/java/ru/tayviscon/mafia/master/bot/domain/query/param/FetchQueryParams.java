@@ -13,7 +13,7 @@ import java.util.Optional;
 @Data
 @Log4j2
 @Accessors(chain = true)
-public class FetchQueryParam<F> {
+public class FetchQueryParams<F> {
 
     private F filter;
     private Pagination pagination;
