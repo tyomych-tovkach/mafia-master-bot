@@ -33,6 +33,7 @@ BEGIN
     stmt := stmt || ' where 1 = 1 ';
 
     stmt := stmt || compute_advanced_filter_condition(params, filter, 'id', 'mgs.id');
+    stmt := stmt || compute_advanced_filter_condition(params, filter, 'stage', 'mgs.stage');
     return stmt;
 
 END
