@@ -11,4 +11,7 @@
     <!--02_mafia_game_session-->
     <include file="/db/migration/v1/02_mafia_game_session/v001_create_mafia_game_session_table.sql"/>
 
+    <!--03_mafia_game_session_participant-->
+    <include file="/db/migration/v1/03_mafia_game_session_participant/v001_mafia_game_session_participant.sql"/>
+
 </databaseChangeLog>
