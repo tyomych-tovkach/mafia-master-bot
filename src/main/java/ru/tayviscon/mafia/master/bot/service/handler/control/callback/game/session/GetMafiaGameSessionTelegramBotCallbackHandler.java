@@ -17,6 +17,7 @@ import ru.tayviscon.mafia.master.bot.util.ValueUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Log4j2
@@ -66,16 +67,28 @@ public class GetMafiaGameSessionTelegramBotCallbackHandler implements TelegramBo
 
         var inlineKeyboardMarkup = new InlineKeyboardMarkup();
 
-        var registerForGameSessionButton = InlineKeyboardButton.builder()
-            .text("Записаться")
-            .callbackData(String.format("reg-in-game?id=%s", mafiaGameSession.getId()))
-            .build();
+        var telegramUserId = update.getCallbackQuery().getFrom().getId();
 
-        var unregisterForGameSessionButton = InlineKeyboardButton.builder()
-            .text("Отменить запись")
-            .callbackData(String.format("unreg-in-game?id=%s", mafiaGameSession.getId()))
-            .build();
-        var buttonsLine = new ArrayList<>(List.of(registerForGameSessionButton, unregisterForGameSessionButton));
+
+        var buttonsLine = new ArrayList<InlineKeyboardButton>();
+        if (
+            mafiaGameSession.getActiveParticipantsMinimalMeritInfo() != null
+                && mafiaGameSession.getActiveParticipantsMinimalMeritInfo().stream()
+                .anyMatch(activeParticipant -> Objects.equals(activeParticipant.getTelegramUserId(), telegramUserId))
+        ) {
+            var unregisterForGameSessionButton = InlineKeyboardButton.builder()
+                .text("Отменить запись")
+                .callbackData(String.format("unreg-in-game?id=%s", mafiaGameSession.getId()))
+                .build();
+            buttonsLine.add(unregisterForGameSessionButton);
+        } else {
+            var registerForGameSessionButton = InlineKeyboardButton.builder()
+                .text("Записаться")
+                .callbackData(String.format("reg-in-game?id=%s", mafiaGameSession.getId()))
+                .build();
+            buttonsLine.add(registerForGameSessionButton);
+        }
+
         inlineKeyboardMarkup.setKeyboard(List.of(buttonsLine));
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         telegramBot.execute(sendMessage);
