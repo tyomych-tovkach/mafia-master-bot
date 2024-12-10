@@ -28,3 +28,8 @@ telegram:
   bot:
     username: ${TELEGRAM_BOT_USERNAME}
     token: ${TELEGRAM_BOT_TOKEN}
+  files:
+    static:
+      rules:
+        path: "classpath:static/rules.pdf"
+        alternative-web-path: "https://www.mafiavip.ru/game_rules"
