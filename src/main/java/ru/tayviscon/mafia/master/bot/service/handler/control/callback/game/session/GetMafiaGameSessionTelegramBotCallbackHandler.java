@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -92,6 +93,10 @@ public class GetMafiaGameSessionTelegramBotCallbackHandler implements TelegramBo
         inlineKeyboardMarkup.setKeyboard(List.of(buttonsLine));
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         telegramBot.execute(sendMessage);
+
+        var answerCallbackQuery = new AnswerCallbackQuery();
+        answerCallbackQuery.setCallbackQueryId(update.getCallbackQuery().getId());
+        telegramBot.execute(answerCallbackQuery);
 
     }
 }

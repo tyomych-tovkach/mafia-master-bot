@@ -38,6 +38,7 @@ BEGIN
     stmt := stmt || compute_advanced_filter_condition(params, filter, 'id', 'mgsp.id');
     stmt := stmt || compute_advanced_filter_condition(params, filter, 'gameSessionId', 'mgsp.game_session_id');
     stmt := stmt || compute_advanced_filter_condition(params, filter, 'participantStatus', 'mgsp.status');
+    stmt := stmt || compute_advanced_filter_condition(params, filter, 'telegramUserId', 'mgsp.telegram_user_id');
     return stmt;
 
 END

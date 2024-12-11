@@ -23,6 +23,8 @@ public class MafiaGameSessionParticipantMinimalMeritInfoFilter {
 
     private AdvancedFieldFilter<UUID> gameSessionId;
 
+    private AdvancedFieldFilter<Long> telegramUserId;
+
     private AdvancedFieldFilter<MafiaGameSessionParticipantStatus> participantStatus;
 
 }
