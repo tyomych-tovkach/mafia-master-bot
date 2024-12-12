@@ -33,3 +33,8 @@ telegram:
       rules:
         path: "classpath:static/rules.pdf"
         alternative-web-path: "https://www.mafiavip.ru/game_rules"
+
+mafia:
+  address:
+    physical: "Северная 302, 2 этаж"
+    yandex-map-link: "https://yandex.ru/maps/org/mafiya_vip/198395698457"
